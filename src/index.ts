@@ -194,6 +194,10 @@ export class OfflineSync {
     };
   }
 
+  async getOperationsByEntity(entity: string): Promise<Operation[]> {
+    return this.queue.filter((op) => op.entity === entity);
+  }
+
   async syncNow(): Promise<SyncResult[]> {
     if (this.syncTimeout) {
       clearTimeout(this.syncTimeout);
